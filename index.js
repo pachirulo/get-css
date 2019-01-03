@@ -56,8 +56,8 @@ module.exports = function(url, options, html) {
       html = stripWaybackToolbar(html)
     }
     var $ = cheerio.load(html)
-    result.pageTitle = $('head > title').text()
-    result.html = html
+    // result.pageTitle = $('head > title').text()
+    // result.html = html
 
     $('[rel=stylesheet]').each(function() {
       var link = $(this).attr('href')
