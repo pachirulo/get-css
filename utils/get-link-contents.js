@@ -14,7 +14,7 @@ module.exports = function getLinkContents(linkUrl, options) {
    }
 
    // expect linked css content
-   if (!response.headers["content-type"].includes("text/css")) {
+   if (!response || (response.headers && !response.headers["content-type"].includes("text/css"))) {
      d.resolve('');
    }
 
