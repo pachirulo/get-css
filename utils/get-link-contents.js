@@ -10,15 +10,15 @@ module.exports = function getLinkContents(linkUrl, options) {
    body
  ) {
    if (error || response.statusCode !== 200) {
-     d.reject(error)
+     d.reject(error);
+   } else {
+    // expect linked css content
+    if (!response || (response.headers && !response.headers["content-type"].includes("text/css"))) {
+      d.resolve('');   
+    } else {
+      d.resolve(body);
+    }
    }
-
-   // expect linked css content
-   if (!response || (response.headers && !response.headers["content-type"].includes("text/css"))) {
-     d.resolve('');
-   }
-
-   d.resolve(body)
  });
 
  return d.promise
